@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>short polling</h2>
+    <div id="container">
+
+    </div>
+    <script>
+        async function getData() {
+            try {
+                const res = await fetch("/getdata");
+                const result = await res.json();
+                document.getElementById("container").innerHTML = result;
+
+            }
+            catch (err) { console.log(err) }
+        }
+        getData();
+        shortPolling();
+        let internvalId; // on navigation or user action or target condition clear out the intervals to avoid unneccary short polling
+        function shortPolling(){
+            internvalId =  setInterval(()=>{
+                getData()
+            }, 3000)
+        }
+    </script>
+</body>
+
+</html>
