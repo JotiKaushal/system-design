@@ -1,19 +1,39 @@
 const puppeteer = require("puppeteer");
-//IIFE (function(){})()
-(async()=>{
-    const browser = await puppeteer.launch({haedless:false,
-        slowMo:100,
-        ignoreDefaultArgs: ['--disable-extensions'], args: ["--window-size=1620,1080"]});
-    const page = await browser.newPage();
-    await page.goto("https://namastedev.com");
-    await page.setViewport({width:1620, height:1080});
-    const corsesLink = ".menu > li:nth-child(3) > a";
-    await page.waitForSelector(corsesLink);
-    await page.click(corsesLink);
-    const corseLink = ".bg-sucess-btn";
-    await page.waitForSelector(corseLink);
-    await page.click(corseLink);
-    console.log("we page loaded");
-    await browser.close();
+
+(async () => {
+  const browser = await puppeteer.launch({
+    headless: false,
+    slowMo: 100,
+    args: ["--window-size=1920,1080"],
+  });
+
+  const page = await browser.newPage();
+
+  await page.goto("https://amazon.com");
+
+  console.log("Webpage Loaded");
+
+  await page.setViewport({ width: 1620, height: 1080 });
+
+  const coursesPageLink = ".menu > li:nth-child(3) > a";
+
+  await page.waitForSelector(coursesPageLink);
+
+  await page.click(coursesPageLink);
+
+  console.log("Courses Page Loaded");
+
+  const enrollButton = ".bg-success-btn";
+  await page.waitForSelector(enrollButton);
+
+  await page.click(enrollButton);
+
+  console.log("Namaste FSD page loaded");
+
+  // await browser.close();
 })();
-///collect logs >> sens it to email >> CRON job to run script everyday at 8 am
+
+// HomeWork:
+// Automate whole user journey
+// Run this sript everyday at 08:00 AM - CRON job
+// Collect all the logs and erorrs send it to email - Amazon SES
