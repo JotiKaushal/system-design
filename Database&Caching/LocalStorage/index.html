@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .light{
+        background-color:beige
+    }
+
+    .dark{
+        background-color: grey;
+    }
+</style>
+<body>
+    
+<h1>Welcome to Local storage</h1>
+<button id="toggle">Toggle Mode</button>
+    <script>
+        function checkMode(){
+            console.log("called");
+        const body = document.body;
+        const btn = document.getElementById("toggle");
+        btn.addEventListener("click",toggleMode);
+        const currentMode = localStorage.getItem("mode");
+        body.classList.add(currentMode);
+
+        }
+        function toggleMode(){
+            console.log("button click");
+            const body = document.body;
+        const currentMode = localStorage.getItem("mode");
+        const newMode = currentMode === "light" ?  "dark" : "light";
+        localStorage.setItem("mode", newMode);
+        body.classList.remove(currentMode)
+        body.classList.add(newMode)
+        }
+        checkMode();
+    </script>
+</body>
+</html>
