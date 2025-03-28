@@ -10,6 +10,7 @@ import Comments from "./Components/comments/Comments";
 import ImageSlider from "./Components/imageSlider/ImageSlider";
 import Pagination from "./Components/Pagination/Pagination";
 import LiveChat from "./Components/liveChat/LiveChat";
+import SearchUI from "./Components/searchUI/SearchUI";
 
 function App() {
   const [lang, setLang] = useState("en");
@@ -18,13 +19,14 @@ function App() {
       <header className="bg-gray-400 py-5 text-xl font-bold text-center flex justify-items-end gap-96">
       <a href="/">My Application</a>
         <nav className="m-2 px-10 w-[800px] flex justify-between text-lg">
-          <a href="/about">About</a>
-          <a href="/team">Team</a>
-          <a href="/accordion">Accordion</a>
-          <a href="/comments">Comments</a>
-          <a href="/imageSlider">Image Slider</a>
-          <a href="/pagination">Pagination</a>
-          <a href="/liveChat">Live Chat</a>
+          <a href="/about">About</a>|
+          <a href="/team">Team</a>|
+          <a href="/accordion">Accordion</a>|
+          <a href="/comments">Comments</a>|
+          <a href="/imageSlider">Image Slider</a>|
+          <a href="/pagination">Pagination</a>|
+          <a href="/liveChat">Live Chat</a>|
+          <a href="/search">Search UI</a>
         </nav>
         <select value={lang} onChange={(e)=> setLang(e.target.value)}>
           <option value="en">English</option>
@@ -47,6 +49,7 @@ function App() {
           <Route path="/imageSlider" element={<ImageSlider />}></Route>
           <Route path="/pagination" element={<Pagination />}></Route>
           <Route path="/liveChat" element={<LiveChat />}></Route>
+          <Route path="/search" element={<SearchUI />}></Route>
         </Routes>
         
       </BrowserRouter>
